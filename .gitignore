@@ -1,0 +1,4 @@
+#Ignorar alguns arquivios
+.classpath
+.project
+.settings
