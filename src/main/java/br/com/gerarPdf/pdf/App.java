@@ -1,11 +1,7 @@
 package br.com.gerarPdf.pdf;
 
-import java.io.FileOutputStream;
-import java.util.Iterator;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -15,22 +11,18 @@ public class App
 {
     public static void main( String[] args )
     {
-        
-    	//criacao do documento
-    	Document document = new Document();
     	
     	try {
-			PdfWriter.getInstance(document, new FileOutputStream("/home/davidks/GERARPDF/pdf/local/TesteGerar.pdf"));
-			document.open();
+    		File directory = new File("/home/davidks/GERARPDF/pdf");
+			File docPDF = File.createTempFile("david", ".pdf", directory);
 			
-						
-				document.add(new Paragraph("Gerando pdf - java" ));
+			if(!docPDF.exists()) {
+				docPDF.createNewFile();
+			}
 			
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-    	
-    	document.close();
     }
 }
